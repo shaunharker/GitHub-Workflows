@@ -21,12 +21,21 @@ My goal with this repository is to address this by providing two possible workfl
 
 ## Workflows 
 
-The first workflow, which I refer to as the _branching workflow_, is very simplified and can be accomplished without a command line and instead using only GUI (graphical user interface, i.e. point-and-click) tools. Despite being simplified it still gives almost all of the many benefits. It also provides a stepping stone along the learning curve. Command-line users can ignore the GUI and participate easily as well.
+A great summary of workflows with nice pictures can be found on the Atlassian site <https://www.atlassian.com/git/tutorials/comparing-workflows/>.
 
-The second workflow, the _forking workflow_, uses more concepts and requires the command line. There is better protection against mistakes and also more flexibility. The great advantage to this kind of workflow is that it allows for a much larger group of collaborators without running risks. This is the workflow used by software develpers on GitHub in order to allow strangers to make contributions.
+The tutorials I provide refer to the _feature branch workflow_, (or just _branching workflow_) and the _forking workflow_) discussed in this summary. 
+
+The two workflows I don't discuss which are mentioned on the Atlassian link are the _centralized workflow_ and the _gitflow workflow_. The _centralized workflow_ is to be avoided because it gives up, for hardly any benefit, a key feature that contributions are presented as "Pull Requests" (PRs) and subject to maintainer review. Instead, everyone just does naked commits against the main "branch" of a single repository. That makes it way too easy to make mistakes.
+
+The _gitflow workflow_ is perhaps interesting, but it is clearly needlessly complex for the needs of most academic writing projects.
+
+The _branching workflow_ is a minimal adjustment to the centralized workflow where you commit against another "branch" and request maintainer review, which adds safety, even if you do the review yourself. The additional step prevents accidentally clicking a button and mucking up the repo for everybody else. It gives the opportunity to use the tools on GitHub to make sure the changes pass a sanity test before imposing them onto the main branch (and hence onto everyone else, who expects pulling from the main branch will be safe). The branching workflow can be accomplished without a command line and instead using only GUI (graphical user interface, i.e. point-and-click) tools. Command-line users can ignore the GUI and participate easily as well.
+
+The _forking workflow_ uses more concepts and requires the command line. There is far better protection against mistakes from coauthors and also more flexibility. The great advantage to this kind of workflow is that it allows for a much larger group of collaborators without running risks. This is the workflow used by software develpers on GitHub and it is so robust and safe that it allows strangers to make contributions to code repositories.
 
 ## Terminology: Branches and Forks
-These terminologies arise from the `git` concepts of "branch" and "fork". 
+
+The terms _branching workflow_ and _forking workflow_ arise from the `git` concepts of "branch" and "fork". 
 
 A single repository can have many so-called _branches_, and depending on which branch is "checked out" one has what is in principle a wholly independent version of the code. These branches can be merged in order to independent develop something without breaking another version until the changes are fully ready. In principle all branches are technically equivalent, but in practice there is a special branch named `master` which is understood to be the main branch.
 
