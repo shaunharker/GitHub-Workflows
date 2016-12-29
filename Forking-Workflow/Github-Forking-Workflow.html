@@ -1,0 +1,1255 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Github-Forking-Workflow</title>
+
+
+<style type="text/css">
+body {
+  font-family: Helvetica, arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: white;
+  padding: 30px; }
+
+body > *:first-child {
+  margin-top: 0 !important; }
+body > *:last-child {
+  margin-bottom: 0 !important; }
+
+a {
+  color: #4183C4; }
+a.absent {
+  color: #cc0000; }
+a.anchor {
+  display: block;
+  padding-left: 30px;
+  margin-left: -30px;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0; }
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+  cursor: text;
+  position: relative; }
+
+h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA09pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoMTMuMCAyMDEyMDMwNS5tLjQxNSAyMDEyLzAzLzA1OjIxOjAwOjAwKSAgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OUM2NjlDQjI4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OUM2NjlDQjM4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5QzY2OUNCMDg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo5QzY2OUNCMTg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PsQhXeAAAABfSURBVHjaYvz//z8DJYCRUgMYQAbAMBQIAvEqkBQWXI6sHqwHiwG70TTBxGaiWwjCTGgOUgJiF1J8wMRAIUA34B4Q76HUBelAfJYSA0CuMIEaRP8wGIkGMA54bgQIMACAmkXJi0hKJQAAAABJRU5ErkJggg==) no-repeat 10px center;
+  text-decoration: none; }
+
+h1 tt, h1 code {
+  font-size: inherit; }
+
+h2 tt, h2 code {
+  font-size: inherit; }
+
+h3 tt, h3 code {
+  font-size: inherit; }
+
+h4 tt, h4 code {
+  font-size: inherit; }
+
+h5 tt, h5 code {
+  font-size: inherit; }
+
+h6 tt, h6 code {
+  font-size: inherit; }
+
+h1 {
+  font-size: 28px;
+  color: black; }
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #cccccc;
+  color: black; }
+
+h3 {
+  font-size: 18px; }
+
+h4 {
+  font-size: 16px; }
+
+h5 {
+  font-size: 14px; }
+
+h6 {
+  color: #777777;
+  font-size: 14px; }
+
+p, blockquote, ul, ol, dl, li, table, pre {
+  margin: 15px 0; }
+
+hr {
+  background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC) repeat-x 0 0;
+  border: 0 none;
+  color: #cccccc;
+  height: 4px;
+  padding: 0;
+}
+
+body > h2:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+body > h1:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+  body > h1:first-child + h2 {
+    margin-top: 0;
+    padding-top: 0; }
+body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0; }
+
+h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+  margin-top: 0; }
+
+li p.first {
+  display: inline-block; }
+li {
+  margin: 0; }
+ul, ol {
+  padding-left: 30px; }
+
+ul :first-child, ol :first-child {
+  margin-top: 0; }
+
+dl {
+  padding: 0; }
+  dl dt {
+    font-size: 14px;
+    font-weight: bold;
+    font-style: italic;
+    padding: 0;
+    margin: 15px 0 5px; }
+    dl dt:first-child {
+      padding: 0; }
+    dl dt > :first-child {
+      margin-top: 0; }
+    dl dt > :last-child {
+      margin-bottom: 0; }
+  dl dd {
+    margin: 0 0 15px;
+    padding: 0 15px; }
+    dl dd > :first-child {
+      margin-top: 0; }
+    dl dd > :last-child {
+      margin-bottom: 0; }
+
+blockquote {
+  border-left: 4px solid #dddddd;
+  padding: 0 15px;
+  color: #777777; }
+  blockquote > :first-child {
+    margin-top: 0; }
+  blockquote > :last-child {
+    margin-bottom: 0; }
+
+table {
+  padding: 0;border-collapse: collapse; }
+  table tr {
+    border-top: 1px solid #cccccc;
+    background-color: white;
+    margin: 0;
+    padding: 0; }
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8; }
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr td {
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0; }
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0; }
+
+img {
+  max-width: 100%; }
+
+span.frame {
+  display: block;
+  overflow: hidden; }
+  span.frame > span {
+    border: 1px solid #dddddd;
+    display: block;
+    float: left;
+    overflow: hidden;
+    margin: 13px 0 0;
+    padding: 7px;
+    width: auto; }
+  span.frame span img {
+    display: block;
+    float: left; }
+  span.frame span span {
+    clear: both;
+    color: #333333;
+    display: block;
+    padding: 5px 0 0; }
+span.align-center {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-center > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: center; }
+  span.align-center span img {
+    margin: 0 auto;
+    text-align: center; }
+span.align-right {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px 0 0;
+    text-align: right; }
+  span.align-right span img {
+    margin: 0;
+    text-align: right; }
+span.float-left {
+  display: block;
+  margin-right: 13px;
+  overflow: hidden;
+  float: left; }
+  span.float-left span {
+    margin: 13px 0 0; }
+span.float-right {
+  display: block;
+  margin-left: 13px;
+  overflow: hidden;
+  float: right; }
+  span.float-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: right; }
+
+code, tt {
+  margin: 0 2px;
+  padding: 0 5px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px; }
+
+pre code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent; }
+
+.highlight pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+  pre code, pre tt {
+    background-color: transparent;
+    border: none; }
+
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+* {
+	-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:0 auto;
+    }
+}
+@media print {
+	table, pre {
+		page-break-inside: avoid;
+	}
+	pre {
+		word-wrap: break-word;
+	}
+}
+</style>
+
+<style type="text/css">
+/**
+ * okaidia theme for JavaScript, CSS and HTML
+ * Loosely based on Monokai textmate theme by http://www.monokai.nl/
+ * @author ocodia
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+	color: #f8f8f2;
+	background: none;
+	text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1.5;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+	padding: 1em;
+	margin: .5em 0;
+	overflow: auto;
+	border-radius: 0.3em;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: #272822;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	padding: .1em;
+	border-radius: .3em;
+	white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: slategray;
+}
+
+.token.punctuation {
+	color: #f8f8f2;
+}
+
+.namespace {
+	opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	color: #f92672;
+}
+
+.token.boolean,
+.token.number {
+	color: #ae81ff;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	color: #a6e22e;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string,
+.token.variable {
+	color: #f8f8f2;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.function {
+	color: #e6db74;
+}
+
+.token.keyword {
+	color: #66d9ef;
+}
+
+.token.regex,
+.token.important {
+	color: #fd971f;
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+.token.italic {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
+}
+</style>
+
+<style type="text/css">
+pre.line-numbers {
+	position: relative;
+	padding-left: 3.8em;
+	counter-reset: linenumber;
+}
+
+pre.line-numbers > code {
+	position: relative;
+}
+
+.line-numbers .line-numbers-rows {
+	position: absolute;
+	pointer-events: none;
+	top: 0;
+	font-size: 100%;
+	left: -3.8em;
+	width: 3em; /* works for line-numbers below 1000 lines */
+	letter-spacing: -1px;
+	border-right: 1px solid #999;
+
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+
+}
+
+	.line-numbers-rows > span {
+		pointer-events: none;
+		display: block;
+		counter-increment: linenumber;
+	}
+
+		.line-numbers-rows > span:before {
+			content: counter(linenumber);
+			color: #999;
+			display: block;
+			padding-right: 0.8em;
+			text-align: right;
+		}
+</style>
+
+
+</head>
+
+<body>
+
+<h1 id="toc_0">GitHub-Forking-Workflow</h1>
+
+<p><strong>Shaun Harker 2016-12-29-1245</strong></p>
+
+<p>I start with a &quot;cheat sheet&quot;; a more in-depth tutorial follows after.</p>
+
+<h1 id="toc_1">GitHub Cheat Sheet</h1>
+
+<h3 id="toc_2">(0) Getting set-up</h3>
+
+<ul>
+<li>Make a GitHub account</li>
+<li>Follow the steps on <a href="https://help.github.com/articles/generating-an-ssh-key/">https://help.github.com/articles/generating-an-ssh-key/</a> to make sure you have passwordless access</li>
+<li>Fork the main repository using the &quot;Fork&quot; button on Github</li>
+<li>Find your forked repo on GitHub and get the URL from the button that says &quot;Clone or Download&quot;</li>
+<li>Open up a terminal, and type:</li>
+<li><code>git clone git@github.com:YOUR_USER_NAME/2017-PatternMatchPaper.git</code></li>
+</ul>
+
+<h3 id="toc_3">(1) Making changes to your local files and committing those changes to your forked repo</h3>
+
+<ul>
+<li>Edit the files in your local repo.</li>
+<li><code>git status</code> to check on which changes have been made</li>
+<li><code>git add</code> files in order to stage them for commits</li>
+<li><code>git commit -m &quot;useful commit message&quot;</code> to commit changes</li>
+<li><code>git push</code> in order to push the changes into your forked repository</li>
+</ul>
+
+<h3 id="toc_4">(2) Merging other people&#39;s work with your own.</h3>
+
+<ul>
+<li><code>git pull mainrepo master</code> (Pull in changes from coauthors)</li>
+<li><code>git status</code> (to see what conflicts there are),</li>
+<li>Edit the conflicted files so they are correct. </li>
+<li><code>git add conflicted-file.tex</code> (to mark resolution of the conflicted files once they are editied), and </li>
+<li><code>git commit -m &quot;merged changed from main repository&quot;</code> (to commit the merge after all conflicts are resolved).</li>
+<li><code>git push</code> (to sync your changes to your forked repo)</li>
+</ul>
+
+<h3 id="toc_5">(3) Making your edits available to others</h3>
+
+<ul>
+<li><code>git status</code> and make sure you&#39;ve commited your own edits as in (1).</li>
+<li><code>git pull mainrepo master</code> and resolve conflicts as in (2).</li>
+<li><code>git push</code> to make sure your forked repo is up-to-date with your local repo.</li>
+<li>Go to <a href="https://github.com">https://github.com</a> and find your forked repo, and click &quot;Pull Request&quot; and fill out the comments indicating what kind of changes were made.</li>
+</ul>
+
+<h2 id="toc_6">Initial Setup</h2>
+
+<ul>
+<li>I went to <a href="https://github.com">https://github.com</a>. </li>
+</ul>
+
+<p><img src="./images/GitHub-Main.png" alt=""></p>
+
+<ul>
+<li>I clicked on &quot;New Repository&quot;. </li>
+</ul>
+
+<p><img src="./images/GitHub-Create.png" alt=""></p>
+
+<ul>
+<li>I chose to make a private repository. (I pay the $7 per month.)</li>
+<li>I named it and gave it a description.</li>
+<li>I clicked &quot;Create repository&quot;</li>
+</ul>
+
+<p>The following was displayed:</p>
+
+<p><img src="./images/GitHub.png" alt=""></p>
+
+<ul>
+<li>I prefer SSH to HTTPS since it uses ssh-keys to avoid password entry when I need to commit. So I clicked the SSH tab. (See Remark 1 in notes below for how this can be changed later if desired.) This changed the text to:</li>
+</ul>
+
+<p><img src="./images/GitHub-SSH.png" alt=""></p>
+
+<ul>
+<li>I followed the instructions for &quot;...or create a new repository on the command line.&quot;. To wit:</li>
+<li>I opened up a terminal prompt and typed the following (i.e. directly followed the instructions):</li>
+</ul>
+
+<div><pre class="line-numbers"><code class="language-bash">cd Desktop
+mkdir 2017-PatternMatchPaper
+cd 2017-PatternMatchPaper
+echo &quot;# 2017-PatternMatchPaper&quot; &gt;&gt; README.md
+git init
+git add README.md
+git commit -m &quot;first commit&quot;
+git remote add origin git@github.com:shaunharker/2017-PatternMatchPaper.git
+git push -u origin master</code></pre></div>
+
+<ul>
+<li>I checked the browser and clicked on my repo to see things had indeed worked:</li>
+</ul>
+
+<p><img src="./images/GitHub-Repo1.png" alt=""></p>
+
+<h3 id="toc_7">Basics</h3>
+
+<p>It is not, perhaps, immediately clear what has been done, so let&#39;s stop and explain a couple concepts.</p>
+
+<ul>
+<li>Git vs GitHub</li>
+<li>Repositories</li>
+<li>Local Repositories: <code>git status</code></li>
+<li>Remote Repositories: <code>git remote</code></li>
+<li>Cloning: <code>git clone</code></li>
+<li>Syncing: <code>git pull</code> <code>git push</code></li>
+<li>Staging: <code>git add</code> <code>git rm</code> <code>git mv</code> </li>
+<li>Committing: <code>git commit</code></li>
+</ul>
+
+<h4 id="toc_8">Git vs GitHub</h4>
+
+<ul>
+<li>Git and GitHub are not the same thing</li>
+<li><code>git</code> is a command line program which does version control</li>
+<li><code>GitHub</code> is a company that does a great job of managing remote <code>git</code> repositories to make it easy to share work.</li>
+</ul>
+
+<h4 id="toc_9">Repositories</h4>
+
+<ul>
+<li>A <em>repository</em> is a folder with files that are under version control.</li>
+<li>What has happened thus far is I have created a repository.</li>
+<li>In fact, I have created <em>two</em> repositories: the one on my laptop, and the one on GitHub.</li>
+</ul>
+
+<h4 id="toc_10">Local Repository</h4>
+
+<ul>
+<li>What is special about the folder on my laptop which makes it a Git repository? Typing <code>ls -a</code> on the command line reveals the secret. There is a hidden directory named <code>.git</code> in the root of the repository. This is how <code>git</code> knows what is going on when it is issued directives. It&#39;s completely self-contained.</li>
+<li>If we type <code>git status</code> this is revealed:</li>
+</ul>
+
+<div><pre class="line-numbers"><code class="language-none">1 ✓ /Users/sharker
+sharker@athena [03:45:25] &gt; git status
+fatal: Not a git repository (or any of the parent directories): .git</code></pre></div>
+
+<p>But if I navigate into the <code>2017-PatternMatchPaper</code> repository, it&#39;s a different story:</p>
+
+<div><pre class="line-numbers"><code class="language-none">4 ✓ /Users/sharker/Desktop/2017-PatternMatchPaper
+sharker@athena [03:45:54] &gt; git status
+On branch master
+Your branch is up-to-date with &#39;origin/master&#39;.
+Untracked files:
+  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)
+
+    .gitignore
+    PatternMatchPaper.tex
+    macros/
+    texfiles/
+
+nothing added to commit but untracked files present (use &quot;git add&quot; to track)</code></pre></div>
+
+<ul>
+<li><p>It says <code>On branch master</code> which reflects a concept that a repository can have several distinct development states at the same time, called branches. We only have a single branch called <code>master</code>. I think that is probably the easiest thing to start with. (I&#39;ll use a branch later to &quot;pretend&quot; I&#39;m another contributor so I can demonstrate the contribution workflow.)</p></li>
+<li><p>Clearly <code>git</code> didn&#39;t write our paper so as you can surmise I&#39;ve moved some files in. I did this by simply drag-and-drop, nothing special at all. Thus, I haven&#39;t told the version control of git about, them, so <code>git status</code> sees them and let&#39;s me know they are <em>untracked</em>. </p></li>
+<li><p>The <code>.gitignore</code> is a file I made as well; also not tracked yet until I tell it to. It has special meaning to <code>git</code>; it tells it that sometimes I will put some files in the repository that I don&#39;t want it to whine about not being under version control when I type <code>git status</code> (e.g. all the junk files a tex compilation will create).</p></li>
+</ul>
+
+<h4 id="toc_11">Remote Repository</h4>
+
+<ul>
+<li>The repository on my laptop is aware of the repository on GitHub. which it regards as a <em>remote repository</em>. It has a special name, called <code>origin</code>. I can see this as follows:</li>
+</ul>
+
+<div><pre class="line-numbers"><code class="language-bash">42 ✓ /Users/sharker/Desktop/2017-PatternMatchPaper
+sharker@athena [03:04:31] &gt; git remote -v
+origin  git@github.com:shaunharker/2017-PatternMatchPaper.git (fetch)
+origin  git@github.com:shaunharker/2017-PatternMatchPaper.git (push)</code></pre></div>
+
+<ul>
+<li>Note the remote repository is not my entire GitHub account. It is that specific project.</li>
+<li>Recall that <code>git status</code> mentioned the repository was up to date with <code>origin/master</code>. Since <code>origin</code> is the remote repository on GitHub, what it is saying is that there is no information on the GitHub repository that isn&#39;t on my local repository. The <code>master</code> part of <code>origin/master</code> is called a branch; there is only one branch currently and it is named <code>master</code> (the traditional name for the main branch) so we can ignore this aspect.</li>
+</ul>
+
+<h4 id="toc_12">Cloning Repositories</h4>
+
+<ul>
+<li>If I wanted, I could throw the git repository I have in the trash. No special uninstallation is required.</li>
+<li>But what if I wanted it back? I could just clone it from the GitHub copy:</li>
+</ul>
+
+<div><pre class="line-numbers"><code class="language-none">git clone git@github.com:shaunharker/2017-PatternMatchPaper.git</code></pre></div>
+
+<p>Where does that crazy URL come from, anyway? Here&#39;s how you can get a hold of it:</p>
+
+<p><img src="./images/GitHub-Clone.png" alt=""></p>
+
+<p>What this technically does is creates a new github repository which is identical to the one at GitHub and sets up the remote named <code>origin</code> to be the GitHub repository. (It also sets up &quot;tracking&quot; so <code>git status</code> will tell me if I&#39;m ahead or behind or up-to-date.) This is precisely the situation we already have, so this is just saying &quot;yes, since we are up-to-date, we can trash our local copy and not lose data.&quot;</p>
+
+<ul>
+<li>Note we could have two different machines which both have performed <code>git clone</code> on the GitHub repository, and they can both interact with it. The idea is to keep it simple though; don&#39;t make a bunch of repos and then talk in weird patterns. Use the central GitHub repo as, well, a hub. A star-shaped topology.</li>
+</ul>
+
+<h4 id="toc_13">Syncing Repositories</h4>
+
+<ul>
+<li><strong>Pushing.</strong> If I change my local repository, it doesn&#39;t change the remote repository automatically. That has to be explicitly ordered via a <code>git push</code> directive which asks it to propagate changes to the remote repository.</li>
+<li><strong>Pulling.</strong> Conversely, if the remote repository gets changed (let&#39;s say I did a <code>git push</code> from another clone on another machine) these changes do not automatically propagate downstream to my computer. I would have to explicitly order this with <code>git pull</code>.</li>
+</ul>
+
+<h4 id="toc_14">Staging and Committing changes</h4>
+
+<ul>
+<li>In fact, if I edit files in my local repository, it doesn&#39;t technically change even my local repository. There is a two step process to achieve this. First, we <em>stage</em> the changes. Then, we <em>commit</em> them. The relevant commands here are:</li>
+</ul>
+
+<div><pre class="line-numbers"><code class="language-bash">git add &lt;new-or-modified-file&gt;
+git rm &lt;file-i-no-longer-want-under-version-control&gt;
+git mv &lt;file-to-give-a-different-name-or-location&gt;
+git status # tell me which files I 
+git commit -m &quot;commit message explaining set of changes&quot;</code></pre></div>
+
+<ul>
+<li>Until <code>git commit</code>, all <code>git add</code> and <code>git rm</code> are simply <em>staged changes</em>. The transaction is not complete and can be rolled back easily. </li>
+<li><code>git add</code> lets me tell it I&#39;m putting a new file under version control.</li>
+<li><code>git rm</code> lets it know I&#39;m getting rid of something.</li>
+<li>If I insert a file but don&#39;t tell it to <code>git add</code>, then <code>git status</code> will let me know there is a file untracked by version control, reminding me to <code>git add</code> it.</li>
+<li>If I <code>rm</code> a file (not <code>git rm</code>) then <code>git status</code> will let me know its gone, but tell me its an unstaged change.</li>
+<li>Once I check <code>git status</code> and see things are staged as I want them, I issue <code>git commit -m &quot;explanation of changes&quot;</code>, and this <em>commits the new version to the repository</em>.</li>
+<li>I can then issue a <code>git push</code> to push those changes to the remote GitHub repository.</li>
+</ul>
+
+<p>Example:</p>
+
+<div><pre class="line-numbers"><code class="language-bash"># Assume I made a new file &quot;file.txt&quot; 
+#   and want to commit the change
+git add file.txt
+git commit -m &quot;added a file named file.txt&quot;
+git push</code></pre></div>
+
+<h2 id="toc_15">Forking Workflow</h2>
+
+<ul>
+<li>At this point, you are probably thinking &quot;All right then, what are you waiting for, <code>git add</code> those tex files, then <code>git commit</code> the staged changes, and then <code>git push</code> to the remote repository!&quot;</li>
+<li>Sure, that would work for <em>me</em>. But I&#39;m the only person who can commit to this repo in this way. </li>
+<li><strong>I won&#39;t actually add the coauthors as people who can make direct changes to this repo.</strong> </li>
+<li>Instead, everybody makes their own &quot;fork&quot;, and people modify their fork, and then do <strong>Pull Requests</strong> (PRs) on the main repository after they make sure their changes are up-to-date and on top of what already has been pushed to the main repo (and thus can be merged without conflict).</li>
+</ul>
+
+<h3 id="toc_16">Forked Repositories</h3>
+
+<ul>
+<li>On GitHub, it is possible to make something called a <em>fork</em> of a repository. This is nothing more than just a copy of a repository that is aware it has been copied. But unlike a local repository that has been cloned, it is again a remote repository on GitHub.</li>
+<li>How collaboration will work is <strong>each coauthor makes a fork of the main repo</strong>, which gives them a GitHub repository. Important point: forking a private repository again gets you a private repository. This is the only way a person who doesn&#39;t pay GitHub a small monthly fee can get a private repo. (<a href="http://stackoverflow.com/questions/9629538/if-i-fork-someone-elses-private-github-repo-into-my-account-is-it-going-to-app">http://stackoverflow.com/questions/9629538/if-i-fork-someone-elses-private-github-repo-into-my-account-is-it-going-to-app</a>)</li>
+<li>Here is how a forked repo appears:</li>
+</ul>
+
+<p><img src="./images/GitHub-ForkedRepo.png" alt=""></p>
+
+<ul>
+<li>Then, after the fork is made, a local repository is made from the fork via <code>git clone</code>. The <code>origin</code> remote to the local repo is the forked repository on GitHub.</li>
+<li>Then work can proceed as normal, just using the forked repository instead of the original one, with no toes stepped on.</li>
+<li>But eventually, changes need to get put back into the main repository. And also, changes to the main repository need to be kept up with somehow.</li>
+<li><p>In other words, there needs to be a way to <code>git pull</code> from the main repo, and <code>git push</code> to the main repo. It turns out <code>git pull</code> works just fine (but you have to give it an argument to say to pull from the main repo and not the forked repo), put <code>git push</code> is a no go -- you don&#39;t have rights to push to the main repo! You only have rights to <code>git push</code> to your own fork. Instead of pushing, you request that the main repo maintainer do a <code>git pull</code> from your fork. So syncing your forked repo with the main repo is a matter of <code>git pull</code>ing, which requires no authorization, and <strong>Pull Requests</strong>, which cause an e-mail to be sent and GitHub has a great little feature to see what the changes can be merged and make it as simple as clicking a button if all is done properly (i.e. the PR can be merged without conflicts).</p></li>
+<li><p>More details:</p></li>
+</ul>
+
+<h4 id="toc_17">Keeping your fork up to date with the main repository</h4>
+
+<ul>
+<li>To bring in changes from the main repo really is just <code>git pull</code>. Except you have to tell it to pull from a remote other than <code>origin</code>. There are two ways to do this:</li>
+</ul>
+
+<div><pre class="line-numbers"><code class="language-none">git pull https://github.com/shaunharker/2017-PatternMatchPaper.git master</code></pre></div>
+
+<p>This is the method of <a href="https://help.github.com/articles/merging-an-upstream-repository-into-your-fork/">https://help.github.com/articles/merging-an-upstream-repository-into-your-fork/</a>. This command tells <code>git</code> to &quot;pull in all the commits I don&#39;t have from the main repository on the branch <code>master</code>.&quot; </p>
+
+<p>Rather than having to type <code>https://github.com/shaunharker/2017-PatternMatchPaper.git</code> every time this common operation is done it is better to set this up as a remote. This would only need to be done once:</p>
+
+<div><pre class="line-numbers"><code class="language-none">git remote add mainrepo https://github.com/shaunharker/2017-PatternMatchPaper.git</code></pre></div>
+
+<p>Typing <code>git remote -v</code> would then tell you about <em>two</em> remote repositories it knows about: <code>origin</code> (your forked repository), and <code>mainrepo</code> (the main repository).</p>
+
+<p>After setting up the remote you could pull in changes more easily with</p>
+
+<div><pre class="line-numbers"><code class="language-none">git pull mainrepo master</code></pre></div>
+
+<p>To be explicit, here is an example.</p>
+
+<p>I currently have a forked repository from Rachel Levanger&#39;s project, and I&#39;m behind a few commits:</p>
+
+<p><img src="./images/GitHub-ForkedRepo.png" alt=""></p>
+
+<p>Note I&#39;m 6 commits behind. Let me check out my local repository which is <code>git clone</code> from my fork.</p>
+
+<div><pre class="line-numbers"><code class="language-bash">31 ✓ /Users/sharker/Unison/Work/tda-d3-explorer
+sharker@athena [04:33:50] &gt; git status
+On branch master
+Your branch is up-to-date with &#39;origin/master&#39;.
+Changes not staged for commit:
+  (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)
+  (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)
+
+    modified:   .gitignore
+
+no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)</code></pre></div>
+
+<p>What this says is I am up to date. It also says I&#39;ve made a local modification to a file called <code>.gitignore</code> but haven&#39;t staged that for a commit (I could easily revert the change). This is not something I need to worry about.</p>
+
+<p>But wait, aren&#39;t I six commits behind? Well, what this says is my <em>local repository</em> is up to date with the remote named <code>origin</code>, which is my <em>forked repository</em>. But the <em>forked repository</em> is six commits behind Rachel&#39;s main repository. Let&#39;s check and see if I have the main repo on speed-dial as a remote:</p>
+
+<div><pre class="line-numbers"><code class="language-none">32 ✓ /Users/sharker/Unison/Work/tda-d3-explorer
+sharker@athena [04:33:53] &gt; git remote -v
+origin  git@github.com:shaunharker/tda-d3-explorer.git (fetch)
+origin  git@github.com:shaunharker/tda-d3-explorer.git (push)
+rachel  git@github.com:rachellevanger/tda-d3-explorer.git (fetch)
+rachel  git@github.com:rachellevanger/tda-d3-explorer.git (push)</code></pre></div>
+
+<p>Yes, I do, and I&#39;ve named it <code>rachel</code> (rather than <code>mainrepo</code>). </p>
+
+<p>So let&#39;s do</p>
+
+<div><pre class="line-numbers"><code class="language-none">git pull rachel master</code></pre></div>
+
+<p>This then says:</p>
+
+<div><pre class="line-numbers"><code class="language-none">33 ✓ /Users/sharker/Unison/Work/tda-d3-explorer
+sharker@athena [04:34:03] &gt; git pull rachel master
+remote: Counting objects: 34, done.
+remote: Compressing objects: 100% (20/20), done.
+remote: Total 34 (delta 22), reused 25 (delta 13), pack-reused 0
+Unpacking objects: 100% (34/34), done.
+From github.com:rachellevanger/tda-d3-explorer
+ * branch            master     -&gt; FETCH_HEAD
+   b567444..44679a4  master     -&gt; rachel/master
+Updating 5719d86..44679a4
+Fast-forward
+ README.md                                          |   32 +-
+ doc/Tutorial.ipynb                                 | 2432 +-------------------
+ explorer.html                                      |  677 ------
+ install.sh                                         |    2 +
+ .../PersistenceExplorer/PersistenceExplorer.py     |    7 +-
+ .../WebApp/PersistenceExplorer.css                 |    3 +-
+ .../WebApp/PersistenceExplorer.js                  |  116 +-
+ 7 files changed, 122 insertions(+), 3147 deletions(-)
+ delete mode 100755 explorer.html
+</code></pre></div>
+
+<p>This is crazy computer talk for &quot;OK, I pulled in the new information from Rachel&#39;s master branch and now you are up to date with that.&quot;</p>
+
+<p>But, if I were to go onto GitHub, I&#39;d still see I&#39;m six commits behind. Why is that? Because that&#39;s a different repository; I just updated my <em>local repository on my laptop</em> with Rachel&#39;s commits to her master repo. My forked repository doesn&#39;t know about this yet.</p>
+
+<p>Let me check <code>git status</code> again:</p>
+
+<div><pre class="line-numbers"><code class="language-none">34 ✓ /Users/sharker/Unison/Work/tda-d3-explorer
+sharker@athena [04:38:24] &gt; git status
+On branch master
+Your branch is ahead of &#39;origin/master&#39; by 6 commits.
+  (use &quot;git push&quot; to publish your local commits)
+Changes not staged for commit:
+  (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)
+  (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)
+
+    modified:   .gitignore
+
+no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)
+</code></pre></div>
+
+<p>This tells me about the issue. As far as it is concerned, those 6 commits are just like any other 6 commits I may have made locally and not pushed to my <code>origin</code> repo yet. So... I&#39;ll push them.</p>
+
+<div><pre class="line-numbers"><code class="language-none">35 ✓ /Users/sharker/Unison/Work/tda-d3-explorer
+sharker@athena [04:40:23] &gt; git push
+Counting objects: 34, done.
+Delta compression using up to 8 threads.
+Compressing objects: 100% (33/33), done.
+Writing objects: 100% (34/34), 5.09 KiB | 0 bytes/s, done.
+Total 34 (delta 22), reused 0 (delta 0)
+remote: Resolving deltas: 100% (22/22), completed with 10 local objects.
+To github.com:shaunharker/tda-d3-explorer.git
+   5719d86..44679a4  master -&gt; master
+</code></pre></div>
+
+<p>Now I can check <code>git status</code> again:</p>
+
+<div><pre class="line-numbers"><code class="language-none">36 ✓ /Users/sharker/Unison/Work/tda-d3-explorer
+sharker@athena [04:41:30] &gt; git status
+On branch master
+Your branch is up-to-date with &#39;origin/master&#39;.
+Changes not staged for commit:
+  (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)
+  (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)
+
+    modified:   .gitignore
+
+no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)
+</code></pre></div>
+
+<p>...and I&#39;m up to date. If I go on the GitHub website it will tell me my forked repository is up to date with Rachel&#39;s main repo.</p>
+
+<p><img src="./images/GitHub-ForkedRepoUpToDate.png" alt=""></p>
+
+<h2 id="toc_18">Resolving Conflicts</h2>
+
+<ul>
+<li>There is an awful thing that can happen when you <code>git pull</code>. That <em>will</em> happen. It&#39;s called a <em>conflict</em>.</li>
+<li>This is when you attempt to do a <code>git pull</code> and <code>git</code> yells at you and says it can&#39;t do it, since you are out of whack with what you are trying to pull in.</li>
+<li>For instance, suppose you fork my repo, and then ignore the main repo for 3 months, during which I make some commits.</li>
+<li>Suppose you also make some commits during this time.</li>
+<li>Then your fork can be in a state where it is <em>both behind and ahead of mine</em>.</li>
+<li>Attempting to <code>git pull</code> from my repo might cause a conflict, since you might have changed something I also changed, and it doesn&#39;t know whether to do what I did or keep what you did.</li>
+<li>What <code>git</code> will do is simply tell you there was some kind of problem, and leave it to you to clean up the mess.</li>
+<li>How this is resolved is you just settle the conflicts by editing the files that are marked by <code>git status</code> as being conflicted in order to remove the conflicts (i.e. make the file correct). Then you <code>git add</code> the resolved version, and once all conflicted files have been fixed and <code>git add</code>ed, you <code>git commit</code> in order to finish the merge. (Technically, a <code>git pull</code> is a type of merge. It can be thought of as composing two sub-commands <code>git fetch</code> and <code>git merge</code>)</li>
+</ul>
+
+<h2 id="toc_19">Workflow</h2>
+
+<p>I want to demonstrate the workflow, but since I am the main repo owner I have to more or less &quot;simulate&quot; what it would be like to not be me. So what I will do is make a branch called <code>shaun</code> and we will pretend this is the <code>master</code> branch of a forked repository.</p>
+
+<p>So to be clear: in the example I&#39;m doing, I will have a single repository with a branch <code>master</code> and a branch <code>shaun</code>. But this pretty much identical to the case of having main repo with a branch <code>master</code> and a forked repository with a branch <code>master</code>, respectively.</p>
+
+<p>The branch manipulations can be skimmed over here if you plan to just work in <code>master</code>.</p>
+
+<p>First I make my new branch:</p>
+
+<div><pre class="line-numbers"><code class="language-none">git checkout -b shaun  # Switch to a new branch named &quot;shaun&quot;
+git push origin shaun  # Let my fork know about this new branch.</code></pre></div>
+
+<p>Here is me doing just that:</p>
+
+<div><pre class="line-numbers"><code class="language-none">41 ✓ /Users/sharker/Desktop
+sharker@athena [05:05:11] &gt; cd 2017-PatternMatchPaper/
+
+42 ✓ /Users/sharker/Desktop/2017-PatternMatchPaper
+sharker@athena [05:05:14] &gt; git checkout -b shaun
+Switched to a new branch &#39;shaun&#39;
+
+43 ✓ /Users/sharker/Desktop/2017-PatternMatchPaper
+sharker@athena [05:05:44] &gt; git push origin shaun
+Total 0 (delta 0), reused 0 (delta 0)
+To github.com:shaunharker/2017-PatternMatchPaper.git
+ * [new branch]      shaun -&gt; shaun</code></pre></div>
+
+<p>So now I&#39;m thinking in terms of the owner of the forked repository, who is going to do some work and then submit a PR to the main repo maintainer. </p>
+
+<p>Because I did a <code>git push</code>, I can see this new branch showing up on GitHub:</p>
+
+<p><img src="./images/GitHub-Branches.png" alt=""></p>
+
+<p>So far so good. So now what I&#39;m going to do is just work in my <code>shaun</code> branch (which is analogous to a coauthor working in their forked repo). Let&#39;s check out what <code>git status</code> says about things:</p>
+
+<div><pre class="line-numbers"><code class="language-none">44 ✓ /Users/sharker/Desktop/2017-PatternMatchPaper
+sharker@athena [05:05:53] &gt; git status
+On branch shaun
+Untracked files:
+  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)
+
+    .gitignore
+    PatternMatchPaper.tex
+    macros/
+    texfiles/
+
+nothing added to commit but untracked files present (use &quot;git add&quot; to track)</code></pre></div>
+
+<p>It says I&#39;m on branch <code>shaun</code>. I have some files I want to put under version control. It&#39;s time for me to finally stage and commit these changes.</p>
+
+<p>There are quite a few files to stage and commit and it would be annoying (but not impossible) to <code>git add</code> them all individually:</p>
+
+<p><img src="./images/GitHub-Files.png" alt=""></p>
+
+<p>It turns out there is a shortcut here: I can type</p>
+
+<div><pre class="line-numbers"><code class="language-none">git add .</code></pre></div>
+
+<p>This will tell it to stage every file it finds, recursively into subdirectories, with the exception of files listed in <code>.gitignore</code>.</p>
+
+<p>The reason for a <code>.gitignore</code> is not only to avoid unimportant files from getting into the repo, like <code>.DS_Store</code> OS files, but also the general rule is we don&#39;t want to include files <em>which are generated by the other files in the repository</em>. For software projects this means <em>you don&#39;t put generated binaries under version control.</em> For doing latex-papers, this means we don&#39;t put the generated pdf under version control. </p>
+
+<p>On the other hand, we note there are a few figures which are PDFs. This is not a problem. The reason is that <em>they do not change every single revision.</em> But since I put <code>.pdf</code> in the <code>.gitignore</code> file this means I have to deal with them as exceptions:</p>
+
+<div><pre class="line-numbers"><code class="language-none">46 ✓ /Users/sharker/Desktop/2017-PatternMatchPaper
+sharker@athena [05:26:20] &gt; git add .
+
+47 ✓ /Users/sharker/Desktop/2017-PatternMatchPaper
+sharker@athena [05:26:23] &gt; git status
+On branch shaun
+Changes to be committed:
+  (use &quot;git reset HEAD &lt;file&gt;...&quot; to unstage)
+
+    new file:   .gitignore
+    new file:   PatternMatchPaper.tex
+    new file:   macros/KM_definitions_4_2015.tex
+    new file:   macros/correctm.tex
+    new file:   texfiles/0-abstract.tex
+    new file:   texfiles/0-authors.tex
+    new file:   texfiles/0-packages.tex
+    new file:   texfiles/1-introduction-introduction.tex
+    new file:   texfiles/1-introduction-organization.tex
+    new file:   texfiles/2-graphtheory-abstractmatching.tex
+    new file:   texfiles/2-graphtheory-algorithms.tex
+    new file:   texfiles/2-graphtheory-posetanddownset.tex
+    new file:   texfiles/3-dynamics-matchingrelation.tex
+    new file:   texfiles/3-dynamics-nofalsenegativesproof.tex
+    new file:   texfiles/3-dynamics-overview.tex
+    new file:   texfiles/3-dynamics-posetofextrema.tex
+    new file:   texfiles/3-dynamics-searchgraph.tex
+    new file:   texfiles/4-application-overview.tex
+    new file:   texfiles/4-application-regulatorynetworks.tex
+    new file:   texfiles/4-application-results.tex
+    new file:   texfiles/4-application-timeseries.tex
+
+</code></pre></div>
+
+<p>As noted, it ignored my <code>.pdf</code> figures. But that&#39;s OK, since I can just <code>git add</code> them manually:</p>
+
+<div><pre class="line-numbers"><code class="language-none">48 ✓ /Users/sharker/Desktop/2017-PatternMatchPaper
+sharker@athena [05:26:26] &gt; git add ./figures/alignmentgraph.pdf 
+The following paths are ignored by one of your .gitignore files:
+figures/alignmentgraph.pdf
+Use -f if you really want to add them.</code></pre></div>
+
+<p>Uh, yes, I <em>really do</em>:</p>
+
+<div><pre class="line-numbers"><code class="language-none">49 ✗ /Users/sharker/Desktop/2017-PatternMatchPaper
+sharker@athena [05:27:51] &gt; git add -f ./figures/alignmentgraph.pdf 
+
+50 ✓ /Users/sharker/Desktop/2017-PatternMatchPaper
+sharker@athena [05:28:55] &gt; git add -f ./figures/yeastdomaingraph.pdf 
+
+51 ✓ /Users/sharker/Desktop/2017-PatternMatchPaper
+sharker@athena [05:29:06] &gt; git add -f ./figures/yeastdata.pdf </code></pre></div>
+
+<p>At this point, I have staged my files. They are ready to be committed. We do a <code>git status</code> and make sure there is nothing silly in there we don&#39;t want to commit to the repository, and then we issue the commit:</p>
+
+<div><pre class="line-numbers"><code class="language-none">52 ✓ /Users/sharker/Desktop/2017-PatternMatchPaper
+sharker@athena [05:29:11] &gt; git commit -m &quot;adding tex files for paper&quot;
+[shaun 1ff87c8] adding tex files for paper
+ 24 files changed, 1937 insertions(+)
+ create mode 100644 .gitignore
+ create mode 100644 PatternMatchPaper.tex
+ create mode 100644 figures/alignmentgraph.pdf
+ create mode 100644 figures/yeastdata.pdf
+ create mode 100644 figures/yeastdomaingraph.pdf
+ create mode 100644 macros/KM_definitions_4_2015.tex
+ create mode 100644 macros/correctm.tex
+ create mode 100644 texfiles/0-abstract.tex
+ create mode 100644 texfiles/0-authors.tex
+ create mode 100644 texfiles/0-packages.tex
+ create mode 100644 texfiles/1-introduction-introduction.tex
+ create mode 100644 texfiles/1-introduction-organization.tex
+ create mode 100644 texfiles/2-graphtheory-abstractmatching.tex
+ create mode 100644 texfiles/2-graphtheory-algorithms.tex
+ create mode 100644 texfiles/2-graphtheory-posetanddownset.tex
+ create mode 100644 texfiles/3-dynamics-matchingrelation.tex
+ create mode 100644 texfiles/3-dynamics-nofalsenegativesproof.tex
+ create mode 100644 texfiles/3-dynamics-overview.tex
+ create mode 100644 texfiles/3-dynamics-posetofextrema.tex
+ create mode 100644 texfiles/3-dynamics-searchgraph.tex
+ create mode 100644 texfiles/4-application-overview.tex
+ create mode 100644 texfiles/4-application-regulatorynetworks.tex
+ create mode 100644 texfiles/4-application-results.tex
+ create mode 100644 texfiles/4-application-timeseries.tex
+</code></pre></div>
+
+<p>Now we can ask <code>git status</code> how we are doing:</p>
+
+<div><pre class="line-numbers"><code class="language-none">53 ✓ /Users/sharker/Desktop/2017-PatternMatchPaper
+sharker@athena [05:31:11] &gt; git status
+On branch shaun
+nothing to commit, working tree clean</code></pre></div>
+
+<p>(Note: for a coauthor working in their <code>master</code> branch this <code>git status</code> would have told them they were ahead on commits compared to the repo. The reason that didn&#39;t happen here is because the branch isn&#39;t set up to track properly -- see Remark 2 in the notes.) </p>
+
+<p>And now we can <code>git push</code>:</p>
+
+<div><pre class="line-numbers"><code class="language-none">55 ✓ /Users/sharker/Desktop/2017-PatternMatchPaper
+sharker@athena [05:31:55] &gt; git push
+Counting objects: 29, done.
+Delta compression using up to 8 threads.
+Compressing objects: 100% (29/29), done.
+Writing objects: 100% (29/29), 79.39 KiB | 0 bytes/s, done.
+Total 29 (delta 0), reused 0 (delta 0)
+To github.com:shaunharker/2017-PatternMatchPaper.git
+   1f9fb9e..1ff87c8  shaun -&gt; shaun</code></pre></div>
+
+<p>Now heading over to GitHub, we can see it is aware something has happened:</p>
+
+<p><img src="./images/GitHub-PushedToBranch.png" alt=""></p>
+
+<p>Normally, however, nothing would be visible yet in the main repo, since the change would only be in the forked repo. But since I&#39;m simulating the forked repo with my <code>shaun</code> branch, it says something here. However, see that it is showing a repository still with just the bare <code>README.md</code> and nothing else. This is because it is showing the <code>master</code> branch by default. But I just pushed to the <code>shaun</code> branch.</p>
+
+<p>This is good, since I&#39;m trying to demonstrate what&#39;s it should be like for a coauthor. The <code>master</code> branch is the main repo, the <code>shaun</code> branch is just like the <code>master</code> branch of the coauthor&#39;s forked repo.</p>
+
+<p>So let&#39;s switch to the <code>shaun</code> branch and see the view that a coauthor would have looking at their <code>master</code> after their commit:</p>
+
+<p><img src="./images/GitHub-ShaunBranch.png" alt=""></p>
+
+<p>Notice how it tells me I&#39;m one commit ahead of <code>master</code>. This is of course the commit we just did. For a coauthor&#39;s forked repo, there would be a similar message, saying it was ahead of the main repo.</p>
+
+<p>To get my commit into <code>master</code> I&#39;m going to do a <em>Pull Request</em> (PR) as a coauthor would have to. This is goofy here since I am sending a Pull Request to myself, but it&#39;s perfectly allowed, and demonstrates what has to happen.</p>
+
+<p><img src="./images/GitHub-PullRequest.png" alt=""></p>
+
+<p>In general a comment is important explaining the intricacies of whatever the changes are, but in this case it&#39;s pretty obvious from the comment alone so I will just write &quot;Migrating to GitHub&quot;. Then I click the &quot;Create pull request.&quot;</p>
+
+<p>This, of course, creates the pull request.</p>
+
+<p>Let&#39;s change hats now, and look at things from the perspective of the main repo maintainer, who just got an e-mail notification that there is a pull request. This is what it will look like:</p>
+
+<p><img src="./images/GitHub-PRReview.png" alt=""></p>
+
+<p>I can click on the &quot;Files changed&quot; tab, and it will show me the line-by-line changes for all 24 changed files. Since in this case all 24 files are actually completely new additions, it just shows the whole file in green:</p>
+
+<p><img src="./images/GitHub-PRChanges.png" alt=""></p>
+
+<p>If there were edits, it would show pink lines for deleted lines, and green lines for introduced lines, and it would avoid showing nearby lines. Here is an example from a commit on a software project:</p>
+
+<p><img src="./images/GitHub-PRChanges2.png" alt=""></p>
+
+<p>Anyhow, let&#39;s accept the PR. This is done by clicking the &quot;Merge Pull Request&quot; button, and then &quot;Confirm Merge&quot;. It informs me this is not a problem to do and there won&#39;t be merge conflicts. (In general, someone doing a PR is going to make the effort to make sure they are up-to-date with the master branch of the main repo so this is the case.)</p>
+
+<p><img src="./images/GitHub-PRMerged.png" alt=""></p>
+
+<p>It asks me if I want to delete the <code>shaun</code> branch too. That&#39;s a nice setup for when you have a branch named after some new feature, and do the work in there, and once its finally ready to get deployed you don&#39;t need that particular development branch anymore. But it&#39;s a bit of a red herring for us, since obviously if it was a coauthor contributing from their own forked repo I wouldn&#39;t be given an option to nuke their repo. But, sure I&#39;ll get rid of the <code>shaun</code> branch now that this demonstration is done.</p>
+
+<p>Now let&#39;s check out my local repository.</p>
+
+<p>Since we are thinking in terms of the main repo maintainer now, let me switch back to the master branch since this is the view they have:</p>
+
+<div><pre class="line-numbers"><code class="language-none">63 ✓ /Users/sharker/Desktop/2017-PatternMatchPaper
+sharker@athena [06:09:30] &gt; git checkout master
+Switched to branch &#39;master&#39;
+Your branch is behind &#39;origin/master&#39; by 2 commits, and can be fast-forwarded.
+  (use &quot;git pull&quot; to update your local branch)</code></pre></div>
+
+<p>This makes sense, since I haven&#39;t yet pulled the changes from my remote repo which just accepted the PR. So I do that:</p>
+
+<div><pre class="line-numbers"><code class="language-none">72 ✓ /Users/sharker/Desktop/2017-PatternMatchPaper
+sharker@athena [06:36:02] &gt; git pull
+Updating 1f9fb9e..f500c7a
+Fast-forward
+ .gitignore                                    |  27 ++
+ PatternMatchPaper.tex                         |  41 +++
+ figures/alignmentgraph.pdf                    | Bin 0 -&gt; 16100 bytes
+ figures/yeastdata.pdf                         | Bin 0 -&gt; 14836 bytes
+ figures/yeastdomaingraph.pdf                  | Bin 0 -&gt; 19015 bytes
+ macros/KM_definitions_4_2015.tex              | 247 ++++++++++++++++
+ macros/correctm.tex                           | 395 ++++++++++++++++++++++++++
+ texfiles/0-abstract.tex                       |  10 +
+ texfiles/0-authors.tex                        |  16 ++
+ texfiles/0-packages.tex                       |  43 +++
+ texfiles/1-introduction-introduction.tex      |  39 +++
+ texfiles/1-introduction-organization.tex      |  25 ++
+ texfiles/2-graphtheory-abstractmatching.tex   |  43 +++
+ texfiles/2-graphtheory-algorithms.tex         | 210 ++++++++++++++
+ texfiles/2-graphtheory-posetanddownset.tex    |  46 +++
+ texfiles/3-dynamics-matchingrelation.tex      |  24 ++
+ texfiles/3-dynamics-nofalsenegativesproof.tex |  82 ++++++
+ texfiles/3-dynamics-overview.tex              |  31 ++
+ texfiles/3-dynamics-posetofextrema.tex        |  63 ++++
+ texfiles/3-dynamics-searchgraph.tex           |  85 ++++++
+ texfiles/4-application-overview.tex           |  21 ++
+ texfiles/4-application-regulatorynetworks.tex | 179 ++++++++++++
+ texfiles/4-application-results.tex            | 156 ++++++++++
+ texfiles/4-application-timeseries.tex         | 154 ++++++++++
+ 24 files changed, 1937 insertions(+)
+ create mode 100644 .gitignore
+ create mode 100644 PatternMatchPaper.tex
+ create mode 100644 figures/alignmentgraph.pdf
+ create mode 100644 figures/yeastdata.pdf
+ create mode 100644 figures/yeastdomaingraph.pdf
+ create mode 100644 macros/KM_definitions_4_2015.tex
+ create mode 100644 macros/correctm.tex
+ create mode 100644 texfiles/0-abstract.tex
+ create mode 100644 texfiles/0-authors.tex
+ create mode 100644 texfiles/0-packages.tex
+ create mode 100644 texfiles/1-introduction-introduction.tex
+ create mode 100644 texfiles/1-introduction-organization.tex
+ create mode 100644 texfiles/2-graphtheory-abstractmatching.tex
+ create mode 100644 texfiles/2-graphtheory-algorithms.tex
+ create mode 100644 texfiles/2-graphtheory-posetanddownset.tex
+ create mode 100644 texfiles/3-dynamics-matchingrelation.tex
+ create mode 100644 texfiles/3-dynamics-nofalsenegativesproof.tex
+ create mode 100644 texfiles/3-dynamics-overview.tex
+ create mode 100644 texfiles/3-dynamics-posetofextrema.tex
+ create mode 100644 texfiles/3-dynamics-searchgraph.tex
+ create mode 100644 texfiles/4-application-overview.tex
+ create mode 100644 texfiles/4-application-regulatorynetworks.tex
+ create mode 100644 texfiles/4-application-results.tex
+ create mode 100644 texfiles/4-application-timeseries.tex
+</code></pre></div>
+
+<p>And now I have the latest code locally.</p>
+
+<h1 id="toc_20">Notes</h1>
+
+<h2 id="toc_21">Remark 1.</h2>
+
+<ul>
+<li>If the HTTPS choice had been made instead it could be easily changed to SSH later by editing a config file <code>.git/config</code>. This is a text file and can be edited by hand. In particular see the line right after <code>[remote &quot;origin&quot;]</code> which says <code>url = ...</code>. This line can be changed to read as either SSH or HTTPS url as in the images above. </li>
+</ul>
+
+<div><pre class="line-numbers"><code class="language-bash">39 ✓ /Users/sharker/Desktop/2017-PatternMatchPaper
+sharker@athena [02:34:16] &gt; more .git/config 
+[core]
+        repositoryformatversion = 0
+        filemode = true
+        bare = false
+        logallrefupdates = true
+        ignorecase = true
+        precomposeunicode = true
+[remote &quot;origin&quot;]
+        url = git@github.com:shaunharker/2017-PatternMatchPaper.git
+        fetch = +refs/heads/*:refs/remotes/origin/*
+[branch &quot;master&quot;]
+        remote = origin
+        merge = refs/heads/master</code></pre></div>
+
+<h2 id="toc_22">Remark 2.</h2>
+
+<p>Interestingly, notice that when we did <code>git status</code> before we did the <code>git push</code> it didn&#39;t complain I&#39;m a commit ahead of my remote repository. I&#39;d rather it did. (This wouldn&#39;t be a problem for a coauthor actually using their <code>master</code>, I&#39;m just noting that apparently I didn&#39;t do the best job setting up my branch.)</p>
+
+<p>We can get this behavior with the command (<a href="http://stackoverflow.com/questions/520650/make-an-existing-git-branch-track-a-remote-branch">http://stackoverflow.com/questions/520650/make-an-existing-git-branch-track-a-remote-branch</a>):</p>
+
+<div><pre class="line-numbers"><code class="language-none">git branch -u origin/shaun</code></pre></div>
+
+<p>which tells it that I want to track the remote branch.</p>
+
+<div><pre class="line-numbers"><code class="language-none">58 ✓ /Users/sharker/Desktop/2017-PatternMatchPaper
+sharker@athena [05:37:24] &gt; git branch -u origin/shaun
+Branch shaun set up to track remote branch shaun from origin.
+</code></pre></div>
+
+<p>And now I get a better <code>git status</code> message:</p>
+
+<div><pre class="line-numbers"><code class="language-none">59 ✓ /Users/sharker/Desktop/2017-PatternMatchPaper
+sharker@athena [05:39:36] &gt; git status
+On branch shaun
+Your branch is up-to-date with &#39;origin/shaun&#39;.
+nothing to commit, working tree clean</code></pre></div>
+
+
+
+<script type="text/javascript">
+var _self="undefined"!=typeof window?window:"undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?self:{},Prism=function(){var e=/\blang(?:uage)?-(\w+)\b/i,t=0,n=_self.Prism={util:{encode:function(e){return e instanceof a?new a(e.type,n.util.encode(e.content),e.alias):"Array"===n.util.type(e)?e.map(n.util.encode):e.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/\u00a0/g," ")},type:function(e){return Object.prototype.toString.call(e).match(/\[object (\w+)\]/)[1]},objId:function(e){return e.__id||Object.defineProperty(e,"__id",{value:++t}),e.__id},clone:function(e){var t=n.util.type(e);switch(t){case"Object":var a={};for(var r in e)e.hasOwnProperty(r)&&(a[r]=n.util.clone(e[r]));return a;case"Array":return e.map&&e.map(function(e){return n.util.clone(e)})}return e}},languages:{extend:function(e,t){var a=n.util.clone(n.languages[e]);for(var r in t)a[r]=t[r];return a},insertBefore:function(e,t,a,r){r=r||n.languages;var l=r[e];if(2==arguments.length){a=arguments[1];for(var i in a)a.hasOwnProperty(i)&&(l[i]=a[i]);return l}var o={};for(var s in l)if(l.hasOwnProperty(s)){if(s==t)for(var i in a)a.hasOwnProperty(i)&&(o[i]=a[i]);o[s]=l[s]}return n.languages.DFS(n.languages,function(t,n){n===r[e]&&t!=e&&(this[t]=o)}),r[e]=o},DFS:function(e,t,a,r){r=r||{};for(var l in e)e.hasOwnProperty(l)&&(t.call(e,l,e[l],a||l),"Object"!==n.util.type(e[l])||r[n.util.objId(e[l])]?"Array"!==n.util.type(e[l])||r[n.util.objId(e[l])]||(r[n.util.objId(e[l])]=!0,n.languages.DFS(e[l],t,l,r)):(r[n.util.objId(e[l])]=!0,n.languages.DFS(e[l],t,null,r)))}},plugins:{},highlightAll:function(e,t){var a={callback:t,selector:'code[class*="language-"], [class*="language-"] code, code[class*="lang-"], [class*="lang-"] code'};n.hooks.run("before-highlightall",a);for(var r,l=a.elements||document.querySelectorAll(a.selector),i=0;r=l[i++];)n.highlightElement(r,e===!0,a.callback)},highlightElement:function(t,a,r){for(var l,i,o=t;o&&!e.test(o.className);)o=o.parentNode;o&&(l=(o.className.match(e)||[,""])[1],i=n.languages[l]),t.className=t.className.replace(e,"").replace(/\s+/g," ")+" language-"+l,o=t.parentNode,/pre/i.test(o.nodeName)&&(o.className=o.className.replace(e,"").replace(/\s+/g," ")+" language-"+l);var s=t.textContent,u={element:t,language:l,grammar:i,code:s};if(!s||!i)return n.hooks.run("complete",u),void 0;if(n.hooks.run("before-highlight",u),a&&_self.Worker){var c=new Worker(n.filename);c.onmessage=function(e){u.highlightedCode=e.data,n.hooks.run("before-insert",u),u.element.innerHTML=u.highlightedCode,r&&r.call(u.element),n.hooks.run("after-highlight",u),n.hooks.run("complete",u)},c.postMessage(JSON.stringify({language:u.language,code:u.code,immediateClose:!0}))}else u.highlightedCode=n.highlight(u.code,u.grammar,u.language),n.hooks.run("before-insert",u),u.element.innerHTML=u.highlightedCode,r&&r.call(t),n.hooks.run("after-highlight",u),n.hooks.run("complete",u)},highlight:function(e,t,r){var l=n.tokenize(e,t);return a.stringify(n.util.encode(l),r)},tokenize:function(e,t){var a=n.Token,r=[e],l=t.rest;if(l){for(var i in l)t[i]=l[i];delete t.rest}e:for(var i in t)if(t.hasOwnProperty(i)&&t[i]){var o=t[i];o="Array"===n.util.type(o)?o:[o];for(var s=0;s<o.length;++s){var u=o[s],c=u.inside,g=!!u.lookbehind,h=!!u.greedy,f=0,d=u.alias;u=u.pattern||u;for(var p=0;p<r.length;p++){var m=r[p];if(r.length>e.length)break e;if(!(m instanceof a)){u.lastIndex=0;var y=u.exec(m),v=1;if(!y&&h&&p!=r.length-1){var b=r[p+1].matchedStr||r[p+1],k=m+b;if(p<r.length-2&&(k+=r[p+2].matchedStr||r[p+2]),u.lastIndex=0,y=u.exec(k),!y)continue;var w=y.index+(g?y[1].length:0);if(w>=m.length)continue;var _=y.index+y[0].length,P=m.length+b.length;if(v=3,P>=_){if(r[p+1].greedy)continue;v=2,k=k.slice(0,P)}m=k}if(y){g&&(f=y[1].length);var w=y.index+f,y=y[0].slice(f),_=w+y.length,S=m.slice(0,w),O=m.slice(_),j=[p,v];S&&j.push(S);var A=new a(i,c?n.tokenize(y,c):y,d,y,h);j.push(A),O&&j.push(O),Array.prototype.splice.apply(r,j)}}}}}return r},hooks:{all:{},add:function(e,t){var a=n.hooks.all;a[e]=a[e]||[],a[e].push(t)},run:function(e,t){var a=n.hooks.all[e];if(a&&a.length)for(var r,l=0;r=a[l++];)r(t)}}},a=n.Token=function(e,t,n,a,r){this.type=e,this.content=t,this.alias=n,this.matchedStr=a||null,this.greedy=!!r};if(a.stringify=function(e,t,r){if("string"==typeof e)return e;if("Array"===n.util.type(e))return e.map(function(n){return a.stringify(n,t,e)}).join("");var l={type:e.type,content:a.stringify(e.content,t,r),tag:"span",classes:["token",e.type],attributes:{},language:t,parent:r};if("comment"==l.type&&(l.attributes.spellcheck="true"),e.alias){var i="Array"===n.util.type(e.alias)?e.alias:[e.alias];Array.prototype.push.apply(l.classes,i)}n.hooks.run("wrap",l);var o="";for(var s in l.attributes)o+=(o?" ":"")+s+'="'+(l.attributes[s]||"")+'"';return"<"+l.tag+' class="'+l.classes.join(" ")+'" '+o+">"+l.content+"</"+l.tag+">"},!_self.document)return _self.addEventListener?(_self.addEventListener("message",function(e){var t=JSON.parse(e.data),a=t.language,r=t.code,l=t.immediateClose;_self.postMessage(n.highlight(r,n.languages[a],a)),l&&_self.close()},!1),_self.Prism):_self.Prism;var r=document.currentScript||[].slice.call(document.getElementsByTagName("script")).pop();return r&&(n.filename=r.src,document.addEventListener&&!r.hasAttribute("data-manual")&&document.addEventListener("DOMContentLoaded",n.highlightAll)),_self.Prism}();"undefined"!=typeof module&&module.exports&&(module.exports=Prism),"undefined"!=typeof global&&(global.Prism=Prism);
+</script>
+
+<script type="text/javascript">
+!function(e){var t={variable:[{pattern:/\$?\(\([\w\W]+?\)\)/,inside:{variable:[{pattern:/(^\$\(\([\w\W]+)\)\)/,lookbehind:!0},/^\$\(\(/],number:/\b-?(?:0x[\dA-Fa-f]+|\d*\.?\d+(?:[Ee]-?\d+)?)\b/,operator:/--?|-=|\+\+?|\+=|!=?|~|\*\*?|\*=|\/=?|%=?|<<=?|>>=?|<=?|>=?|==?|&&?|&=|\^=?|\|\|?|\|=|\?|:/,punctuation:/\(\(?|\)\)?|,|;/}},{pattern:/\$\([^)]+\)|`[^`]+`/,inside:{variable:/^\$\(|^`|\)$|`$/}},/\$(?:[a-z0-9_#\?\*!@]+|\{[^}]+\})/i]};e.languages.bash={shebang:{pattern:/^#!\s*\/bin\/bash|^#!\s*\/bin\/sh/,alias:"important"},comment:{pattern:/(^|[^"{\\])#.*/,lookbehind:!0},string:[{pattern:/((?:^|[^<])<<\s*)(?:"|')?(\w+?)(?:"|')?\s*\r?\n(?:[\s\S])*?\r?\n\2/g,lookbehind:!0,inside:t},{pattern:/(["'])(?:\\\\|\\?[^\\])*?\1/g,inside:t}],variable:t.variable,"function":{pattern:/(^|\s|;|\||&)(?:alias|apropos|apt-get|aptitude|aspell|awk|basename|bash|bc|bg|builtin|bzip2|cal|cat|cd|cfdisk|chgrp|chmod|chown|chroot|chkconfig|cksum|clear|cmp|comm|command|cp|cron|crontab|csplit|cut|date|dc|dd|ddrescue|df|diff|diff3|dig|dir|dircolors|dirname|dirs|dmesg|du|egrep|eject|enable|env|ethtool|eval|exec|expand|expect|export|expr|fdformat|fdisk|fg|fgrep|file|find|fmt|fold|format|free|fsck|ftp|fuser|gawk|getopts|git|grep|groupadd|groupdel|groupmod|groups|gzip|hash|head|help|hg|history|hostname|htop|iconv|id|ifconfig|ifdown|ifup|import|install|jobs|join|kill|killall|less|link|ln|locate|logname|logout|look|lpc|lpr|lprint|lprintd|lprintq|lprm|ls|lsof|make|man|mkdir|mkfifo|mkisofs|mknod|more|most|mount|mtools|mtr|mv|mmv|nano|netstat|nice|nl|nohup|notify-send|nslookup|open|op|passwd|paste|pathchk|ping|pkill|popd|pr|printcap|printenv|printf|ps|pushd|pv|pwd|quota|quotacheck|quotactl|ram|rar|rcp|read|readarray|readonly|reboot|rename|renice|remsync|rev|rm|rmdir|rsync|screen|scp|sdiff|sed|seq|service|sftp|shift|shopt|shutdown|sleep|slocate|sort|source|split|ssh|stat|strace|su|sudo|sum|suspend|sync|tail|tar|tee|test|time|timeout|times|touch|top|traceroute|trap|tr|tsort|tty|type|ulimit|umask|umount|unalias|uname|unexpand|uniq|units|unrar|unshar|uptime|useradd|userdel|usermod|users|uuencode|uudecode|v|vdir|vi|vmstat|wait|watch|wc|wget|whereis|which|who|whoami|write|xargs|xdg-open|yes|zip)(?=$|\s|;|\||&)/,lookbehind:!0},keyword:{pattern:/(^|\s|;|\||&)(?:let|:|\.|if|then|else|elif|fi|for|break|continue|while|in|case|function|select|do|done|until|echo|exit|return|set|declare)(?=$|\s|;|\||&)/,lookbehind:!0},"boolean":{pattern:/(^|\s|;|\||&)(?:true|false)(?=$|\s|;|\||&)/,lookbehind:!0},operator:/&&?|\|\|?|==?|!=?|<<<?|>>|<=?|>=?|=~/,punctuation:/\$?\(\(?|\)\)?|\.\.|[{}[\];]/};var a=t.variable[1].inside;a["function"]=e.languages.bash["function"],a.keyword=e.languages.bash.keyword,a.boolean=e.languages.bash.boolean,a.operator=e.languages.bash.operator,a.punctuation=e.languages.bash.punctuation}(Prism);
+</script>
+
+<script type="text/javascript">
+!function(){"undefined"!=typeof self&&self.Prism&&self.document&&Prism.hooks.add("complete",function(e){if(e.code){var t=e.element.parentNode,s=/\s*\bline-numbers\b\s*/;if(t&&/pre/i.test(t.nodeName)&&(s.test(t.className)||s.test(e.element.className))&&!e.element.querySelector(".line-numbers-rows")){s.test(e.element.className)&&(e.element.className=e.element.className.replace(s,"")),s.test(t.className)||(t.className+=" line-numbers");var n,a=e.code.match(/\n(?!$)/g),l=a?a.length+1:1,m=new Array(l+1);m=m.join("<span></span>"),n=document.createElement("span"),n.className="line-numbers-rows",n.innerHTML=m,t.hasAttribute("data-start")&&(t.style.counterReset="linenumber "+(parseInt(t.getAttribute("data-start"),10)-1)),e.element.appendChild(n)}}})}();
+</script>
+
+<script type="text/x-mathjax-config">
+(function () {
+
+MathJax.Hub.Config({
+	'showProcessingMessages': false,
+	'messageStyle': 'none'
+});
+
+if (typeof MathJaxListener !== 'undefined') {
+	MathJax.Hub.Register.StartupHook('End', function () {
+		MathJaxListener.invokeCallbackForKey_('End');
+	});
+}
+
+})();
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+</body>
+
+</html>
