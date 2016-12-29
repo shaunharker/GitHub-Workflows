@@ -40,7 +40,11 @@ _Forks_, on the other hand, refer to wholly different repositories, belonging to
 
 ## Pull Requests
 
-In both branching and forking workflows the key concept is that there is a `master` "branch" of a main repository (i.e. main "fork") and the ultimate goal is to copy it (i.e. pull other author's contributions from it), improve it, and then issue a _Pull Request_ (PR). Project maintainers inspect pull requests and either approve them or request fixes. In the branching workflow, there is only one repository but many "branches" within it, and a pull request from a coauthor Alice will ask that the `master` branch pull from Alice's development branch `alice-dev`. In the forking workflow, there are many repositories mirroring a main repository, and a pull request asks that the `master` branch of the main repository will pull from the coauthor's `master` branch in their forked repository. 
+In both branching and forking workflows the key concept is that there is a `master` "branch" of a main repository (i.e. main "fork") and the ultimate goal is to copy it (i.e. pull other author's contributions from it), improve it, and then issue a _Pull Request_ (PR). Project maintainers inspect pull requests and either approve them or request fixes. 
+
+In the branching workflow, there is only one repository but many "branches" within it, and a pull request from a coauthor Alice will ask that the `master` branch pull from Alice's development branch `alice-dev`. 
+
+In the forking workflow, there are many repositories mirroring a main repository, and a pull request asks that the `master` branch of the main repository will pull from one of the coauthor's branches in their forked repository. (It could be their `master` branch, but actually this can cause problems if they make commits after a pull request and don't realize they are changing the PR by doing so!)
 
 ## Tutorials
 
