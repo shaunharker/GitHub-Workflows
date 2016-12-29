@@ -20,7 +20,7 @@ Advantages of using GitHub include:
 
 A great summary of workflows with nice pictures can be found on the Atlassian site <https://www.atlassian.com/git/tutorials/comparing-workflows/>.
 
-The tutorials I provide refer to the _feature branch workflow_, (or just _branching workflow_) and the _forking workflow_) discussed in this summary. These correspond to the shorter and longer tutorials, respectively.
+The tutorials I provide refer to the _feature branch workflow_, (or just _branching workflow_) and the _forking workflow_ discussed on the Atlassian site. These correspond to the shorter and longer tutorials, respectively.
 
 The two workflows I don't discuss which are mentioned on the Atlassian link are the _centralized workflow_ and the _gitflow workflow_. The _centralized workflow_ is to be avoided because it gives up, for hardly any benefit, a key feature that contributions are presented as "Pull Requests" (PRs) and subject to maintainer review. Instead, everyone just does naked commits against the main "branch" of a single repository. That makes it way too easy to make mistakes.
 
