@@ -6,7 +6,7 @@
 
 In this GitHub project I provide [two tutorials](https://shaunharker.github.io/GitHub-Workflows/) (one is shorter, one is longer) on `git` and `GitHub` in hopes of lowering the barrier of entry for academics to use these tools for collaborative writing (particularly, with Latex). 
 
-In particular [the shorter of the two tutorials](https://shaunharker.github.io/GitHub-Workflows/Branching-Workflow/GitHub-Branching-Workflow.html)  describes a GUI-based GitHub workflow which is more-or-less point-and-click and does not require the command line.
+In particular [the shorter of the two tutorials](https://shaunharker.github.io/GitHub-Workflows/Branching-Workflow/GitHub-Branching-Workflow.html)  describes a GUI-based GitHub workflow which is completely point-and-click and does not require the command line.
 
 Advantages of using GitHub include:
 
